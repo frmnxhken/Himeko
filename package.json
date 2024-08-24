@@ -4,7 +4,8 @@
   "description": "Himeko is a form validation library designed with simplicity and user-friendliness in mind.",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "test": "jest"
   },
   "keywords": [
     "validation",
