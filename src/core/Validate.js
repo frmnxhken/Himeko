@@ -23,6 +23,16 @@ export default class Validate {
         return form.value === form.value.toUpperCase();
     };
 
+    // Max length field validation
+    maxData(form, max) {
+        return form.value.length <= max;
+    }
+    
+    // Min length field validation
+    minData(form, min) {
+        return form.value.length >= min;
+    }
+
     /**
      *
      *  Specially validation for numeric
@@ -59,7 +69,15 @@ export default class Validate {
 
         // Selection validation by type
         types.forEach((type) => {
-            this.result[type] = this.validations[type](form)
+            if(type.includes("min")) {
+                this.min = type.split(":")[1];
+                this.result["min"] = this.minData(form, this.min);
+            } else if(type.includes("max")) {
+                this.max = type.split(":")[1];
+                this.result["max"] = this.maxData(form, this.max);
+            } else {
+                this.result[type] = this.validations[type](form)
+            }
         })
 
         // Checking error 
