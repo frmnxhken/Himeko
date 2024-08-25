@@ -3,16 +3,22 @@ export default class Validate {
         this.errors = {}
     }
 
-    // required field validation
+    // Required field validation
     isFill = (form) => {
         return /\S+/.test(form.value)
     }
-    
+
+    // Alphabet only field validation
+    isAlphabet = (form) => {
+        return /^[a-zA-z\s]+$/.test(form.value);
+    }
+        
     // Validation handler
     validation = (form, types) => {
         this.result = {}
         this.validations = {
-            required: this.isFill 
+            required: this.isFill,
+            alphabet: this.isAlphabet
         }
 
         // Selection validation by type
