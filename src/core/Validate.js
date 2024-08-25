@@ -23,9 +23,25 @@ export default class Validate {
         return form.value === form.value.toUpperCase();
     };
 
+    /**
+     *
+     *  Specially validation for numeric
+     *   
+    **/
+
     // Isnumber field validation
     isNumber = (form) => {
         return /^[0-9]*$/.test(form.value);
+    };
+
+    // Isinteger field validation
+    isInteger = (form) => {
+        return Number.isInteger(parseFloat(form.value));
+    };
+
+    // Isfloat field validation
+    isFloat = (form) => {
+        return /\d+\.\d+/.test(form.value);
     };
 
     // Validation handler
@@ -36,7 +52,9 @@ export default class Validate {
             alphabet: this.isAlphabet,
             number: this.isNumber,
             lower: this.lowerCase,
-            upper: this.upperCase
+            upper: this.upperCase,
+            integer: this.isInteger,
+            float: this.isFloat
         }
 
         // Selection validation by type
