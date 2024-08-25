@@ -1,3 +1,5 @@
+import Message from "../message/Message.js";
+
 export default class Validate {
     constructor() {
         this.domains = ["gmail.com", "yahoo.com"];
@@ -62,6 +64,11 @@ export default class Validate {
         return /\d+\.\d+/.test(form.value);
     }
 
+    // Display Message while error validation
+    displayMessage = (form, message) => {
+        document.querySelector(`[data-message=${form.name}]`).innerText = message;
+    };
+
     // Validation handler
     validation = (form, types) => {
         this.result = {}
@@ -93,7 +100,13 @@ export default class Validate {
         this.error = Object.keys(this.result).find(
             (key) => this.result[key] == false
         )
-      
-        this.errors[form.name] = this.error
+        
+        // Initial message class
+        const message = new Message(this.min, this.max);
+
+        // Display message handler
+        this.errors[form.name] = this.error;
+        this.message = this.error !== undefined ? message.messages[this.error] : "";
+        this.displayMessage(form, this.message);
     }
 }
