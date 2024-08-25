@@ -12,13 +12,19 @@ export default class Validate {
     isAlphabet = (form) => {
         return /^[a-zA-z\s]+$/.test(form.value);
     }
+
+    // Isnumber field validation
+    isNumber = (form) => {
+        return /^[0-9]*$/.test(form.value);
+    };
         
     // Validation handler
     validation = (form, types) => {
         this.result = {}
         this.validations = {
             required: this.isFill,
-            alphabet: this.isAlphabet
+            alphabet: this.isAlphabet,
+            number: this.isNumber
         }
 
         // Selection validation by type
