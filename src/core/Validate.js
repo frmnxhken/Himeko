@@ -1,5 +1,6 @@
 export default class Validate {
     constructor() {
+        this.domains = ["gmail.com", "yahoo.com"];
         this.errors = {}
     }
 
@@ -12,16 +13,23 @@ export default class Validate {
     isAlphabet = (form) => {
         return /^[a-zA-z\s]+$/.test(form.value);
     }
+
+    // isEmail field validation
+    isEmail= (form) => {
+        return this.domains.indexOf(form.value.split("@")[1]) == -1
+          ? false
+          : true;
+    }
     
     // Lower case field validation
     lowerCase = (form) => {
         return form.value === form.value.toLowerCase();
-    };
+    }
     
     // Upper case field validation
     upperCase = (form) => {
         return form.value === form.value.toUpperCase();
-    };
+    }
 
     // Max length field validation
     maxData(form, max) {
@@ -42,17 +50,17 @@ export default class Validate {
     // Isnumber field validation
     isNumber = (form) => {
         return /^[0-9]*$/.test(form.value);
-    };
+    }
 
     // Isinteger field validation
     isInteger = (form) => {
         return Number.isInteger(parseFloat(form.value));
-    };
+    }
 
     // Isfloat field validation
     isFloat = (form) => {
         return /\d+\.\d+/.test(form.value);
-    };
+    }
 
     // Validation handler
     validation = (form, types) => {
@@ -60,6 +68,7 @@ export default class Validate {
         this.validations = {
             required: this.isFill,
             alphabet: this.isAlphabet,
+            email: this.isEmail,
             number: this.isNumber,
             lower: this.lowerCase,
             upper: this.upperCase,
