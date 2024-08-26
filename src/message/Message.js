@@ -11,7 +11,8 @@ export default class Message {
             lower: "This field must be lowercase",
             upper: "This field must be uppercase",
             integer: "This field must be integer",
-            float: "This field must be float"
+            float: "This field must be float",
+            image: "This field only accepts image file"
         }
     }
 }

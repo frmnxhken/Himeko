@@ -76,6 +76,19 @@ export default class Validate {
         document.querySelector(`[data-message=${form.name}]`).innerText = message;
     };
 
+    /**
+     * 
+     * Specially validation for file
+     * 
+     */
+
+    isImage = (form) => {
+        if(form.files[0] !== undefined) {
+            return form.files[0].type.includes("image");
+        }
+        return false;
+    }
+
     // Validation handler
     validation = (form, types) => {
         this.result = {}
@@ -88,7 +101,8 @@ export default class Validate {
             lower: this.lowerCase,
             upper: this.upperCase,
             integer: this.isInteger,
-            float: this.isFloat
+            float: this.isFloat,
+            image: this.isImage
         }
 
         // Selection validation by type
