@@ -22,6 +22,13 @@ export default class Validate {
           ? false
           : true;
     }
+
+    // Url format field validation
+    isUrl = (form) => {
+        return /^(http|ftp)s?:\/\/((?=.{3,253}$)(localhost|(([^ ]){1,63}\.[^ ]+)))$/.test(
+            form.value
+        );
+    }
     
     // Lower case field validation
     lowerCase = (form) => {
@@ -76,6 +83,7 @@ export default class Validate {
             required: this.isFill,
             alphabet: this.isAlphabet,
             email: this.isEmail,
+            url: this.isUrl,
             number: this.isNumber,
             lower: this.lowerCase,
             upper: this.upperCase,

@@ -3,6 +3,7 @@ export default class Message {
         this.messages = {
             required: "This field must be filled in",
             email: "Email format incorrect",
+            url: "Url format incorrect",
             number: "This field only accepts numbers",
             alphabet: "This field only accepts letters",
             max: `This field maximal ${max} characters.`,
