@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'validation-lib.js',
+    filename: 'himeko_validation.js',
     path: path.resolve(__dirname, 'dist'),
     library: 'Himeko',
     libraryTarget: 'umd'
