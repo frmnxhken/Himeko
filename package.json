@@ -1,6 +1,6 @@
 {
   "name": "himeko",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Himeko is a form validation library designed with simplicity and user-friendliness in mind.",
   "main": "index.js",
   "scripts": {
