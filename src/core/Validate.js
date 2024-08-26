@@ -89,6 +89,12 @@ export default class Validate {
         return false;
     }
 
+    // Check is valid validation
+    check = () => {
+        const checks = Object.values(this.errors);
+        return checks.filter((check) => check !== undefined).length === 0;
+    };
+
     // Validation handler
     validation = (form, types) => {
         this.result = {}
@@ -130,5 +136,8 @@ export default class Validate {
         this.errors[form.name] = this.error;
         this.message = this.error !== undefined ? message.messages[this.error] : "";
         this.displayMessage(form, this.message);
+
+        // Return input value
+        return form.value;
     }
 }
