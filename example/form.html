@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himeko</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="github" onclick="window.location.href='https://github.com/frmnxhken/Himeko'">
+        <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-social-github-512.png" alt="icon">
+        <h1>Github</h1>
+    </div>
+
+    <div class="container">
+        <form method="post">
+            <div class="header">
+                <h1>Himeko</h1>
+                <p>Easy to use form validation javascript</p>
+            </div>
+            <div class="form-input">
+                <div class="input">
+                    <label>First Name</label>
+                    <input type="text" name="firstname">
+                    <div class="error-message" data-message="firstname"></div>
+                </div>
+                <div class="input">
+                    <label>Last Name</label>
+                    <input type="text" name="lastname">
+                    <div class="error-message" data-message="lastname"></div>
+                </div>
+            </div>
+            <div class="input">
+                <label>E-mail</label>
+                <input type="text" name="email">
+                <div class="error-message" data-message="email"></div>
+            </div>
+            <div class="input">
+                <label>Address</label>
+                <textarea name="address"></textarea>
+                <div class="error-message" data-message="address"></div>
+            </div>
+            <button type="submit">Join Us</button>
+        </form>
+    </div>
+
+    <script src="himeko_validation.js"></script>
+    <script>
+        const form = document.querySelector("form")
+        
+        // initialitation library
+        const himeko = new Himeko.Validate();
+        
+        form.addEventListener("submit", function(e) {
+            e.preventDefault()
+            
+            const firstname = himeko.validation(form.firstname, ["required", "alphabet", "min:4", "max:24"]);
+            const lastname = himeko.validation(form.lastname, ["required", "alphabet"]);
+            const email = himeko.validation(form.email, ["required", "email"]);
+            const address = himeko.validation(form.address, ["required"]);
+            
+            // Value of input
+            let dataForm = {
+                firstname: firstname,
+                lastname: lastname,
+                email: email,
+                address: address,
+            }
+    
+            // check(). Check if all data is valid
+            if(himeko.check()) {
+                // if data isvalid = execute this code
+                alert("Success");
+                console.log(dataForm);
+    
+                // you can post data with API in here if all data isvalid
+                fetch("http//example.api", {
+                    method: "POST",
+                    body: JSON.stringify(dataForm)
+                })
+    
+                form.reset();
+            }
+        })
+    </script>
+    
+</body>
+</html>

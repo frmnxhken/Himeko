@@ -1,0 +1,123 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #EBEDF6;
+    font-family: sans-serif;
+}
+
+p {
+    color: #525767;
+}
+
+.github {
+    cursor: pointer;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 240px;
+    top: 100px;
+    padding: 10px 0;
+    right: 0;
+    align-items: center;
+    column-gap: 10px;
+    background-color: white;
+    transform: rotate(45deg);
+    transform-origin: bottom right;
+}
+
+.github h1 {
+    font-size: 24px;
+}
+
+.github img {
+    width: 40px;
+}
+
+.container {
+    max-width: 500px;
+    width: 80%;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2.5rem 1.5rem;
+    box-sizing: border-box;
+    border-radius: 7px;
+}
+
+.header {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    padding: 2rem 0;
+    margin-bottom: 50px;
+}
+
+input {
+    width: 100%;
+    border: none;
+    border: 2px solid #EBEDF6;
+    font-size: 1em;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+    border-radius: 7px;
+    outline: none;
+}
+
+textarea {
+    outline: none;
+    width: 100%;
+    border: none;
+    border: 2px solid #EBEDF6;
+    font-size: 1em;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+    border-radius: 7px;
+    resize: none;
+}
+
+label {
+    font-size: 1em;
+}
+
+button {
+    border: none;
+    font-size: 1em;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 7px;
+    background-color: #080B14;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.form-input {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;    
+}
+
+@media (max-width: 600px) {
+    .form-input {
+        display: block;
+    }
+}
+
+.input {
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    font-size: 13px;
+    color: #ff0b70;
+    height: 15px;
+    box-sizing: border-box;
+}
